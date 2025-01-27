@@ -18,6 +18,7 @@ class GlobalMailNotificationChannelConfigurationSchema extends GlobalNotificatio
     public function __construct()
     {
         parent::__construct();
+        $this->renderingDefinition->setLabel('Notification Mail');
 
         $this->addProperty(static::KEY_SENDER, new StringSchema(static::DEFAULT_SENDER));
         $this->addProperty(static::KEY_RECEIVER, new StringSchema(static::DEFAULT_RECEIVER));
