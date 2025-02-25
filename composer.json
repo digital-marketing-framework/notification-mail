@@ -22,7 +22,7 @@
     "homepage": "https://www.mediatis.de",
     "require": {
         "php": "^8.1",
-        "digital-marketing-framework/core": "^2.4",
+        "digital-marketing-framework/core": "^2.6",
         "digital-marketing-framework/mail": "^1.0"
     },
     "require-dev": {

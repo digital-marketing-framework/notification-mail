@@ -36,6 +36,7 @@ class MailNotificationChannel extends NotificationChannel
     }
 
     public function notify(
+        string $environment,
         string $title,
         string $message,
         mixed $details,
@@ -54,10 +55,10 @@ class MailNotificationChannel extends NotificationChannel
             $mail->addTo($value);
         }
 
-        $mail->text($this->getBody($title, $message, $details, $component, $level));
-        $mail->html($this->getHtmlBody($title, $message, $details, $component, $level));
+        $mail->text($this->getBody($environment, $title, $message, $details, $component, $level));
+        $mail->html($this->getHtmlBody($environment, $title, $message, $details, $component, $level));
 
-        $subject = MailUtility::sanitizeHeaderString($this->levelToString($level) . ': ' . $title);
+        $subject = MailUtility::sanitizeHeaderString(sprintf('%s: %s [%s]', $this->levelToString($level), $title, $environment));
         if ($subject === '') {
             $this->logger->warning('Dirty mail header found: "' . $title . '"');
         }
